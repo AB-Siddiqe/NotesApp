@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
+
     Context context;
     List<Notes>notesList;
     NoteClickListener clickListener;
@@ -41,13 +42,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull NoteAdapter.ViewHolder holder, int position) {
 
         holder.titleText.setText(notesList.get(position).getTitle());
+        holder.titleText.setSelected(true);
 
         holder.noteText.setText(notesList.get(position).getNotes());
 
         holder.dateText.setText(notesList.get(position).getDate());
         holder.dateText.setSelected(true);
 
-        if (notesList.get(position).getPinned()) {
+        if (notesList.get(position).isPinned()){
             holder.imageView_pin.setImageResource(R.drawable.pin);
         } else {
             holder.imageView_pin.setImageResource(0);
@@ -89,6 +91,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public int getItemCount() {
         return notesList.size();
     }
+
+    public void filterlist(List<Notes>filterList){
+        notesList = filterList;
+        notifyDataSetChanged();
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView previous_note;

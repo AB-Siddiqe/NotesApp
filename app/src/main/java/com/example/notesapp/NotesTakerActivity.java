@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class NotesTakerActivity extends AppCompatActivity {
     EditText edittext_title, edittext_notes;
     ImageView imageView_save;
     Notes notes;
+    Boolean isOldNote= false;
+    Button back;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,6 +44,24 @@ public class NotesTakerActivity extends AppCompatActivity {
         edittext_title=findViewById(R.id.edittext_title);
         edittext_notes=findViewById(R.id.edittext_notes);
         imageView_save=findViewById(R.id.imageView_save);
+        back = findViewById(R.id.backbutton1);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(NotesTakerActivity.this, MainActivity.class));
+            }
+        });
+
+        notes = new Notes();
+        try {
+            notes= (Notes) getIntent().getSerializableExtra("Old_note");
+            edittext_title.setText(notes.getTitle());
+            edittext_notes.setText(notes.getNotes());
+            isOldNote= true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         imageView_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +76,11 @@ public class NotesTakerActivity extends AppCompatActivity {
                 SimpleDateFormat formet = new SimpleDateFormat("EEE, d MMM YYYY HH:mm a");
                 Date date = new Date();
 
-               notes=new Notes();
+                if (!isOldNote){
+                    notes=new Notes();
+                }
 
-
-               notes.setNotes(title);
+               notes.setTitle(title);
                notes.setNotes(description);
                notes.setDate(formet.format(date));
 

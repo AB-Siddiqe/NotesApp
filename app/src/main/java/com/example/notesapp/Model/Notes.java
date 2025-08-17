@@ -24,6 +24,14 @@ public class Notes implements Serializable{
     @ColumnInfo(name = "pinned")
     Boolean pinned=false;
 
+    public Notes() {
+        this.ID = ID;
+        this.title = title;
+        this.notes = notes;
+        this.date = date;
+        this.pinned = pinned;
+    }
+
     public int getID() {
         return ID;
     }
@@ -56,22 +64,14 @@ public class Notes implements Serializable{
         this.date = date;
     }
 
-    public Boolean getPinned() {
-        return pinned;
+    public boolean isPinned() {
+
+        return false;
     }
 
     public void setPinned(Boolean pinned) {
+
         this.pinned = pinned;
     }
-
-    public Notes(int ID, String title, Boolean pinned) {
-        this.ID = ID;
-        this.title = title;
-        this.pinned = pinned;
-    }
-
-    public Notes() {
-    }
-
 
 }

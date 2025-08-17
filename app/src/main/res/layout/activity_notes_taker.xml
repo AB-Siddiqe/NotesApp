@@ -12,7 +12,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        tools:ignore="MissingClass">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,12 +21,13 @@
 
             <ImageView
                 android:id="@+id/imageView_save"
-                android:layout_alignParentEnd="true"
-                android:padding="8dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/baseline_save"
                 android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"/>
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@color/white"
+                android:padding="8dp"
+                android:src="@drawable/save_alt" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -34,9 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title:"
-        android:padding="8dp"
+        android:padding="10dp"
+        android:layout_marginHorizontal="15dp"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"/>
@@ -45,13 +48,22 @@
         android:id="@+id/edittext_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
         android:hint="Add Notes:"
         android:padding="8dp"
         android:textStyle="normal"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:singleLine="true"
         android:textColorHint="@color/white"/>
+
+    <Button
+        android:id="@+id/backbutton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="540dp"
+        android:text="Back"
+        android:textColor="@color/black" />
 
 
 </LinearLayout>
